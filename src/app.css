@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "Nintendo";
+  font-style: normal;
+  font-weight: 200 700;
+  font-display: swap;
+  src: url("/fonts/Nintendo-DS-BIOS.ttf") format("truetype");
+}
+
+@theme {
+  --font-display: "Nintendo", "sans-serif";
+}
+
+@import "tailwindcss";
