@@ -76,7 +76,7 @@
 
     <div class="p-4 w-96 h-64 flex justify-center items-center gap-6">
       <a
-        href="#"
+        href="https://x.com/ponzidotland"
         class="hover:scale-110 transition-transform"
         aria-label="Twitter"
       >
@@ -95,7 +95,7 @@
         </svg>
       </a>
       <a
-        href="#"
+        href="https://discord.gg/ponziland"
         class="hover:scale-110 transition-transform"
         aria-label="Discord"
       >
@@ -116,7 +116,7 @@
         </svg>
       </a>
       <a
-        href="#"
+        href="https://github.com/RuneLabsxyz/PonziLand"
         class="hover:scale-110 transition-transform"
         aria-label="GitHub"
       >
