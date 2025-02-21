@@ -81,6 +81,8 @@
             class="p-4 w-full max-w-[95vw] min-h-64 flex justify-center items-center gap-6 z-20 flex-wrap"
         >
             <a
+                target="_blank"
+                rel="noopener noreferrer"
                 href="https://x.com/ponzidotland"
                 class="hover:scale-110 transition-transform"
                 aria-label="Twitter"
@@ -100,6 +102,8 @@
                 </svg>
             </a>
             <a
+                target="_blank"
+                rel="noopener noreferrer"
                 href="https://discord.gg/ponziland"
                 class="hover:scale-110 transition-transform"
                 aria-label="Discord"
@@ -131,6 +135,8 @@
                 </svg>
             </a>
             <a
+                target="_blank"
+                rel="noopener noreferrer"
                 href="https://github.com/RuneLabsxyz/PonziLand"
                 class="hover:scale-110 transition-transform"
                 aria-label="GitHub"
