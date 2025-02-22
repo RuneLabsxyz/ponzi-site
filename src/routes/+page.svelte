@@ -3,13 +3,11 @@
 </script>
 
 <div
-    class="min-h-screen flex justify-center items-center relative max-h-screen max-w-screen overflow-hidden pointer-events-none"
+    class="min-h-screen flex justify-center items-center relative max-h-screen max-w-screen overflow-hidden"
     style="background-image: url('/images/bg.png'); background-size: cover; background-position: center;"
 >
     <!-- Character images -->
-    <div
-        class="absolute w-screen h-screen left-0 top-0 hidden md:block pointer-events-none"
-    >
+    <div class="absolute w-screen h-screen left-0 top-0 hidden md:block">
         <img
             src="/images/ponziboys/image(2).png"
             alt="Character"
