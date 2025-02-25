@@ -1,10 +1,10 @@
 <script lang="ts">
-  import Hero from '$lib/component/hero.svelte';
-  import MainCanvas from '$lib/component/main-canvas.svelte';
-  import SectionCommunity from '$lib/component/section-community.svelte';
-  import SectionLandofponzi from '$lib/component/section-landofponzi.svelte';
-  import SectionNuke from '$lib/component/section-nuke.svelte';
-  import SectionTax from '$lib/component/section-tax.svelte';
+  import Hero from '$lib/components/hero.svelte';
+  import MainCanvas from '$lib/components/main-canvas.svelte';
+  import SectionCommunity from '$lib/components/section-community.svelte';
+  import SectionLandofponzi from '$lib/components/section-landofponzi.svelte';
+  import SectionNuke from '$lib/components/section-nuke.svelte';
+  import SectionTax from '$lib/components/section-tax.svelte';
 </script>
 
 <MainCanvas />

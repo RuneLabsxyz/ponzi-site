@@ -1,9 +1,17 @@
 <script lang="ts">
-  import { T } from '@threlte/core';
-  import { interactivity, useTexture } from '@threlte/extras';
-  import { Checkbox, Pane } from 'svelte-tweakpane-ui';
-  import { Spring } from 'svelte/motion';
-  import { NearestFilter, RepeatWrapping, SRGBColorSpace, Texture, type Mesh } from 'three';
+  import { T } from "@threlte/core";
+  import { interactivity, useTexture } from "@threlte/extras";
+  import { Checkbox, Pane } from "svelte-tweakpane-ui";
+  import { Spring } from "svelte/motion";
+  import {
+    Group,
+    NearestFilter,
+    RepeatWrapping,
+    SRGBColorSpace,
+    Texture,
+    type Mesh,
+  } from "three";
+  import PonziboysAtlas from "./ponziboys-atlas.svelte";
 
   interactivity();
 
@@ -24,12 +32,14 @@
     rotateOffset,
     translateFactor,
     translateOffset,
-    scaleOffset
+    scaleOffset,
   }: Props = $props();
 
   let y = $state(0);
 
-  let rotation = $derived((y / document.body.scrollHeight) * rotateFactor + rotateOffset);
+  let rotation = $derived(
+    (y / document.body.scrollHeight) * rotateFactor + rotateOffset
+  );
 
   let scale = $derived.by(() => {
     const scale = (y / document.body.scrollHeight) * scaleFactor + scaleOffset;
@@ -37,7 +47,8 @@
   });
 
   let translate = $derived.by(() => {
-    const translate = (y / document.body.scrollHeight) * translateFactor + translateOffset;
+    const translate =
+      (y / document.body.scrollHeight) * translateFactor + translateOffset;
     return translate - 1;
   });
 
@@ -51,10 +62,10 @@
     return texture;
   }
 
-  const texture = useTexture('/3d/textures/checker.png', {
-    transform: (texture) => {
+  const texture = useTexture("/textures/checker.png", {
+    transform: (texture: any) => {
       return pixelTexture(texture);
-    }
+    },
   });
 </script>
 
@@ -63,7 +74,7 @@
 <T.PerspectiveCamera
   makeDefault
   position={[14, 2, 0]}
-  oncreate={(ref) => {
+  oncreate={(ref: any) => {
     ref.lookAt(0, -0.3, 0);
   }}
 />
@@ -98,20 +109,22 @@
     return map.clone();
   }}
 
-  <T
-    is={mesh}
-    {scale}
+  <T.Group
+    rotation.y={-rotation}
     position.y={translate}
     position.z={translate * 1.5}
-    rotation.y={-rotation}
-    castShadow
+    {scale}
   >
-    <T.ConeGeometry args={[2.5, 3, 4, 1]} />
-    <T.MeshStandardMaterial color="#0B4F6C" />
-  </T>
-  <!-- 
-  <T.Mesh rotation.x={-Math.PI / 2} receiveShadow>
+    <T is={mesh} castShadow>
+      <T.ConeGeometry args={[2.5, 3, 4, 1]} />
+      <T.MeshStandardMaterial color="#0B4F6C" />
+    </T>
+    <!-- 
+    <T.Mesh rotation.x={-Math.PI / 2} receiveShadow>
     <T.PlaneGeometry args={[6, 6]} />
     <T.MeshStandardMaterial map={floorMap()} />
-  </T.Mesh> -->
+    </T.Mesh> -->
+
+    <PonziboysAtlas />
+  </T.Group>
 {/await}
