@@ -5,6 +5,7 @@
   onMount(() => {
     gsap.to("#downarrows", {
       opacity: 0,
+      display: 'none',
       scrollTrigger: {
         trigger: "#downarrows",
         start: "top center",
