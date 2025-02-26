@@ -24,7 +24,7 @@
 </script>
 
 <section
-  class="relative m-auto flex h-screen w-screen max-w-md flex-col items-center justify-center gap-6 md:flex-row-reverse lg:max-w-5xl xl:max-w-6xl"
+  class="z-20 relative m-auto flex h-screen w-screen max-w-md flex-col items-center justify-center gap-6 md:flex-row-reverse lg:max-w-5xl xl:max-w-6xl"
 >
   <div id="welcomeFullArt" class="w-full md:p-24" style="transform: scale(0.9)">
     <img

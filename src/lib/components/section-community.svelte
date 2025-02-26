@@ -1,26 +1,27 @@
 <script lang="ts">
-  import { gsap } from 'gsap';
+  import { gsap } from "gsap";
 
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
-  import { onMount } from 'svelte';
-  import LandDisplay from './land/land-display.svelte';
-  import { tokens } from '$lib/utils';
+  import { tokens } from "$lib/utils";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { onMount } from "svelte";
+  import LandDisplay from "./land/land-display.svelte";
+  import RandomLand from "./land/randomLand.svelte";
 
   gsap.registerPlugin(ScrollTrigger);
 
   onMount(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: '#communityImage',
-        start: '-50% center',
-        end: '150% center',
-        scrub: 1
-      }
+        trigger: "#communityImage",
+        start: "-50% center",
+        end: "150% center",
+        scrub: 1,
+      },
     });
 
-    tl.to('#communityImage', {
+    tl.to("#communityImage", {
       scale: 1,
-      duration: 5
+      duration: 5,
     });
   });
 </script>
@@ -35,33 +36,20 @@
       class="h-full w-full object-contain object-center"
     />
   </div> -->
-  <div class="flex flex-wrap justify-between">
-    <LandDisplay class="h-32 w-32" token={tokens.ePAPER} biome={false} level={3} />
-    <LandDisplay class="h-32 w-32" token={tokens.eSTRK} biome={false} level={3} />
-    <LandDisplay class="h-32 w-32" token={tokens.eLORDS} biome={false} level={3} />
-    <LandDisplay class="h-32 w-32" token={tokens.eBROTHER} biome={false} level={3} />
-    <LandDisplay class="h-32 w-32" token={tokens.eETH} biome={false} level={3} />
-    <LandDisplay class="h-32 w-32" token={tokens.ePIMP} biome={false} level={3} />
-
-    <LandDisplay class="h-32 w-32" token={tokens.ePAPER} biome={false} level={2} />
-    <LandDisplay class="h-32 w-32" token={tokens.eSTRK} biome={false} level={2} />
-    <LandDisplay class="h-32 w-32" token={tokens.eLORDS} biome={false} level={2} />
-    <LandDisplay class="h-32 w-32" token={tokens.eBROTHER} biome={false} level={2} />
-    <LandDisplay class="h-32 w-32" token={tokens.eETH} biome={false} level={2} />
-    <LandDisplay class="h-32 w-32" token={tokens.ePIMP} biome={false} level={2} />
-
-    <LandDisplay class="h-32 w-32" token={tokens.ePAPER} biome={false} />
-    <LandDisplay class="h-32 w-32" token={tokens.eSTRK} biome={false} />
-    <LandDisplay class="h-32 w-32" token={tokens.eLORDS} biome={false} />
+  <div class="flex flex-wrap justify-between" id="communityImage" style="transform: scale(0.9)">
+    {#each Array(15) as _}
+      <RandomLand />
+    {/each}
   </div>
   <div class="flex w-full flex-col">
     <h2 class="font-display text-stroke text-4xl">TOGETHER STRONG !</h2>
     <p class="text-body tracking-wide">
-      In Ponzi Land, we support a vibrant array of tokens and thriving multicommunities. Each token
-      is a piece of beautiful art, representing the diverse and dynamic ecosystem we've built
-      together. We even have custom houses, but you're always welcome to bring your own token! From
-      ePAPER to eLORDS, every token tells a story and brings us closer. So, let's stand united,
-      celebrate our diversity, and watch our communities flourish! 🌟🎨
+      In Ponzi Land, we support a vibrant array of tokens and thriving
+      multicommunities. Each token is a piece of beautiful art, representing the
+      diverse and dynamic ecosystem we've built together. We even have custom
+      houses, but you're always welcome to bring your own token! From $PAPER to
+      $LORDS, every token tells a story and brings us closer. So, let's stand
+      united, and watch our communities flourish!
     </p>
   </div>
 </section>

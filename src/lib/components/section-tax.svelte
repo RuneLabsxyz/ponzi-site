@@ -6,13 +6,29 @@
 
   gsap.registerPlugin(ScrollTrigger);
 
+  onMount(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#claimImage',
+        start: '-50% center',
+        end: '150% center',
+        scrub: 1
+      }
+    });
+
+    tl.to('#claimImage', {
+      scale: 1,
+      duration: 5
+    });
+  });
+
   onMount(() => {});
 </script>
 
 <section
   class="relative m-auto flex h-screen w-screen max-w-md flex-col items-center justify-center gap-6 md:flex-row lg:max-w-5xl xl:max-w-6xl"
 >
-  <div id="" class="w-full md:p-24">
+  <div id="claimImage" class="w-full md:p-24" style="transform: scale(0.9)">
     <video
       autoplay
       loop

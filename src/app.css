@@ -38,3 +38,7 @@ html {
   -webkit-text-stroke: var(--stroke-width) black;
   paint-order: stroke fill;
 }
+
+.text-stroke-1 {
+  --stroke-width: 1px !important;
+}

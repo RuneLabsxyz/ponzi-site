@@ -119,12 +119,7 @@
       <T.ConeGeometry args={[2.5, 3, 4, 1]} />
       <T.MeshStandardMaterial color="#0B4F6C" />
     </T>
-    <!-- 
-    <T.Mesh rotation.x={-Math.PI / 2} receiveShadow>
-    <T.PlaneGeometry args={[6, 6]} />
-    <T.MeshStandardMaterial map={floorMap()} />
-    </T.Mesh> -->
 
-    <PonziboysAtlas />
+    <!-- <PonziboysAtlas /> -->
   </T.Group>
 {/await}
