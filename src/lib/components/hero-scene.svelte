@@ -1,19 +1,20 @@
 <script lang="ts">
   import { T } from "@threlte/core";
-  import { interactivity, useTexture } from "@threlte/extras";
-  import { Checkbox, Pane } from "svelte-tweakpane-ui";
-  import { Spring } from "svelte/motion";
   import {
-    Group,
+    interactivity,
+    useGltf,
+    useTexture,
+    useCursor,
+  } from "@threlte/extras";
+  import { Spring } from "svelte/motion";
+
+  import {
     NearestFilter,
     RepeatWrapping,
     SRGBColorSpace,
     Texture,
     type Mesh,
   } from "three";
-  import PonziboysAtlas from "./ponziboys-atlas.svelte";
-
-  interactivity();
 
   type Props = {
     mesh: Mesh;
@@ -62,11 +63,9 @@
     return texture;
   }
 
-  const texture = useTexture("/textures/checker.png", {
-    transform: (texture: any) => {
-      return pixelTexture(texture);
-    },
-  });
+  interactivity();
+  let logoScale = new Spring(1);
+  let isHovering = $state(false);
 </script>
 
 <svelte:window bind:scrollY={y} />
@@ -99,22 +98,26 @@
   target-position={[0, 0, 0]}
 />
 
-{#await texture then map}
-  {@const floorMap = () => {
-    map.repeat.set(3, 3);
-    return map.clone();
-  }}
-  {@const cubeMap = () => {
-    map.repeat.set(1, 1);
-    return map.clone();
-  }}
-
+{#await useGltf("/3d/runelabslogo.glb") then gltf}
   <T.Group
     rotation.y={-rotation}
     position.y={translate}
     position.z={translate * 1.5}
     {scale}
   >
+    <T
+      is={gltf.scene}
+      scale={logoScale.current}
+      onpointerenter={() => {
+        logoScale.target = 1.1;
+        isHovering = true;
+      }}
+      onpointerleave={() => {
+        logoScale.target = 1;
+        isHovering = false;
+      }}
+      castShadow
+    ></T>
     <T is={mesh} castShadow>
       <T.ConeGeometry args={[2.5, 3, 4, 1]} />
       <T.MeshStandardMaterial color="#0B4F6C" />
@@ -123,3 +126,11 @@
     <!-- <PonziboysAtlas /> -->
   </T.Group>
 {/await}
+
+{#if isHovering}
+  <style>
+    canvas {
+      cursor: pointer !important;
+    }
+  </style>
+{/if}

@@ -19,4 +19,4 @@
 
 <SectionNuke />
 
-<section class="relative h-screen w-full"></section>
+<section class="relative h-screen w-0"></section>

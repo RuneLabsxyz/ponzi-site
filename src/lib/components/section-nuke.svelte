@@ -61,7 +61,7 @@
     <video
       muted
       loop
-      class="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 {paused ? 'opacity-0' : 'opacity-100'}"
+      class="absolute inset-0 w-full h-full object-contain transition-opacity duration-300 scale-90 {paused ? 'opacity-0' : 'opacity-100'}"
       src="/videos/nuke-animation.mp4"
       bind:paused={paused}
     >

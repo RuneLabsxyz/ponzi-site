@@ -10,7 +10,7 @@
 
   let granularity = $state(4);
   let scaleFactor = $state(1);
-  let rotateFactor = $state(4.5);
+  let rotateFactor = $state(4.45);
   let translateFactor = $state(0);
   let rotateOffset = $state(0.21);
   let scaleOffset = $state(1);
@@ -44,7 +44,7 @@
       label="rotate factor"
       min={0}
       max={10}
-      step={0.1}
+      step={0.05}
     />
     <Slider
       bind:value={scaleOffset}
