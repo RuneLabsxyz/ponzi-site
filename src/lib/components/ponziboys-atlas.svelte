@@ -28,7 +28,12 @@
   const rInner = 0.5;
   const rOuter = 3;
 
-  const ponziboysInstances = Array.from({ length: 200 }, (_, id) => {
+  const pyramidPosition = [0, 0, 0];
+  const pyramidHeight = 2;
+  const pyramidRadius = 2;
+  const distanceThreshold = 0.5;
+
+  const ponziboysInstances = Array.from({ length: 500 }, (_, id) => {
     const { x, y, z } = randomPointBetweenSpheres(rInner, rOuter);
     const animationIndex = Math.floor(
       Math.random() * ponziboysAtlasMeta[0].animations.length
@@ -42,20 +47,29 @@
     };
   });
 
-  function isTooCloseToPyramid({ x, y, z }: { x: number; y: number; z: number }) {
-    const pyramidPosition = [0, 0, 0];
-    const pyramidHeight = 2;
-    const pyramidRadius = 2;
-    const distanceThreshold = 0.2;
-
+  function isTooCloseToPyramid({
+    x,
+    y,
+    z,
+  }: {
+    x: number;
+    y: number;
+    z: number;
+  }) {
     const pyramidTop = pyramidPosition[1] + pyramidHeight / 2;
     const pyramidBottom = pyramidPosition[1] - pyramidHeight / 2;
     // function that in function of y checks if the distance of the point is less than the radius at that height
     const radiusAtHeight = (y: number) => {
-      return pyramidRadius * Math.sqrt(1 - Math.pow((y - pyramidPosition[1]) / pyramidHeight, 2));
+      return (
+        pyramidRadius *
+        Math.sqrt(1 - Math.pow((y - pyramidPosition[1]) / pyramidHeight, 2))
+      );
     };
     // check if the point is inside the pyramid
-    if ((y > pyramidBottom - distanceThreshold) && y < pyramidTop + distanceThreshold) {
+    if (
+      y > pyramidBottom - distanceThreshold &&
+      y < pyramidTop + distanceThreshold
+    ) {
       const distanceToPyramid = Math.sqrt(
         Math.pow(x - pyramidPosition[0], 2) +
           Math.pow(z - pyramidPosition[2], 2)

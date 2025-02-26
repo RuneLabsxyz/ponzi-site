@@ -7,10 +7,10 @@
 
   const mesh = new Mesh();
 
-  let granularity = $state(5);
-  let scaleFactor = $state(5);
+  let granularity = $state(4);
+  let scaleFactor = $state(1);
   let rotateFactor = $state(5);
-  let translateFactor = $state(5);
+  let translateFactor = $state(0);
   let rotateOffset = $state(0.21);
   let scaleOffset = $state(1);
   let translateOffset = $state(1);
