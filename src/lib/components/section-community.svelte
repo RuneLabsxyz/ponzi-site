@@ -56,7 +56,7 @@
   </div>
   <div class="flex w-full flex-col">
     <h2 class="font-display text-stroke text-4xl">TOGETHER STRONG !</h2>
-    <p class="text-body text-xl tracking-wide">
+    <p class="text-body tracking-wide">
       In Ponzi Land, we support a vibrant array of tokens and thriving multicommunities. Each token
       is a piece of beautiful art, representing the diverse and dynamic ecosystem we've built
       together. We even have custom houses, but you're always welcome to bring your own token! From

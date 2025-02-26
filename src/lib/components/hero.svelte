@@ -19,9 +19,10 @@ onMount(() => {
 
 <section class="relative flex h-screen w-full items-center justify-center">
   <img src="/images/logo-text.png" alt="ponziland logo text" />
+  <button class="absolute top-0 right-0 m-4 px-4 py-2 play-button">Play game</button>
 </section>
 
-<div class="fixed bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center z-10">
+<div class="fixed bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center z-10 gap-4">
   <div class="relative opacity-50" id="downarrows">
     <svg
       class="h-6 w-6 text-yellow-500"
@@ -45,3 +46,6 @@ onMount(() => {
     </svg>
   </div>
 </div>
+
+<style>
+</style>

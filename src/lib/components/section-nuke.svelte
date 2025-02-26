@@ -35,7 +35,7 @@
   </div>
   <div class="flex w-full flex-col ">
     <h2 class="font-display text-stroke text-4xl">NUKE 'EM !</h2>
-    <p class="text-body text-xl tracking-wide">
+    <p class="text-body tracking-wide">
       What happens if they don't pay, you ask? In Ponzi's world, if your neighbors don't pay up,
       it's time to hit the big red button and watch the sparks fly! It's a high-stakes game where
       every move counts, and sometimes, a little chaos is just what you need to shake things up. So,

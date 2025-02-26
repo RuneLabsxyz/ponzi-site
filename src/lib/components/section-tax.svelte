@@ -24,7 +24,7 @@
   </div>
   <div class="flex w-full flex-col md:items-end md:text-right">
     <h2 class="font-display text-stroke text-3xl">RENT IS DUE !</h2>
-    <p class="text-body text-xl tracking-wide">
+    <p class="text-body tracking-wide">
       But wait, there's a twist! In Ponzi's world, you can tax your neighbors, and they can tax you
       right back! It's a strategic dance where you choose your tokens and shorts wisely to maximize
       your gains. This dynamic system keeps everyone on their toes, creating a balanced and
