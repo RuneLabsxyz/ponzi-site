@@ -116,6 +116,9 @@
         logoScale.target = 1;
         isHovering = false;
       }}
+      onclick={() => {
+        window.open("https://runelabs.xyz", "_blank");
+      }}
       castShadow
     ></T>
     <T is={mesh} castShadow>
