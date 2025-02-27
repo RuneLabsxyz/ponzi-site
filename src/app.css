@@ -1,13 +1,44 @@
+@import 'tailwindcss';
+
 @font-face {
-  font-family: "Nintendo";
+  font-family: 'PonziNumber';
+  src: url('/fonts/PonziNumber_Regular_G7.ttf');
+}
+
+@font-face {
+  font-family: 'PonziDS';
   font-style: normal;
-  font-weight: 200 700;
-  font-display: swap;
-  src: url("/fonts/Nintendo-DS-BIOS.ttf") format("truetype");
+  font-weight: 400;
+  src: url('/fonts/PonziDS_RegularV2.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'PonziDS';
+  font-style: normal;
+  font-weight: 600;
+  src: url('/fonts/PonziDS2_SemiBoldV3.ttf') format('truetype');
 }
 
 @theme {
-  --font-display: "Nintendo", "sans-serif";
+  --default-font-family: 'PonziDS', sans-serif;
+  --font-display: 'PonziNumber', sans-serif;
+  --font-body: var(--default-font-family);
 }
 
-@import "tailwindcss";
+:root {
+  image-rendering: pixelated;
+}
+
+html {
+  @apply text-white;
+}
+
+.text-stroke {
+  --stroke-width: 5px;
+  -webkit-text-stroke: var(--stroke-width) black;
+  paint-order: stroke fill;
+}
+
+.text-stroke-1 {
+  --stroke-width: 1px !important;
+}
