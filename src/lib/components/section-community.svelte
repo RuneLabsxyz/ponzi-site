@@ -26,30 +26,36 @@
   });
 </script>
 
-<section
-  class="relative m-auto flex h-screen w-screen max-w-md flex-col items-center justify-center gap-6 md:flex-row lg:max-w-5xl xl:max-w-6xl"
->
-  <!-- <div id="communityImage" class="w-full md:p-24" style="transform: scale(0.9)">
+<section class="z-20 relative min-h-screen min-w-screen">
+  <div
+    class="m-auto flex flex-col items-center justify-center gap-6 md:flex-row lg:max-w-4xl xl:max-w-6xl p-4"
+  >
+    <!-- <div id="communityImage" class="w-full md:p-24" style="transform: scale(0.9)">
     <img
       src="/images/fullart-nuke-incoming.png"
       alt="Nuke Incoming !?!"
       class="h-full w-full object-contain object-center"
     />
   </div> -->
-  <div class="flex flex-wrap justify-between" id="communityImage" style="transform: scale(0.9)">
-    {#each Array(15) as _}
-      <RandomLand />
-    {/each}
-  </div>
-  <div class="flex w-full flex-col">
-    <h2 class="font-display text-stroke text-4xl">TOGETHER STRONG !</h2>
-    <p class="text-body tracking-wide">
-      In Ponzi Land, we support a vibrant array of tokens and thriving
-      multicommunities. Each token is a piece of beautiful art, representing the
-      diverse and dynamic ecosystem we've built together. We even have custom
-      houses, but you're always welcome to bring your own token! From $PAPER to
-      $LORDS, every token tells a story and brings us closer. So, let's stand
-      united, and watch our communities flourish!
-    </p>
+    <div
+      class="flex flex-wrap justify-between w-full"
+      id="communityImage"
+      style="transform: scale(0.9)"
+    >
+      {#each Array(15) as _}
+        <RandomLand />
+      {/each}
+    </div>
+    <div class="flex w-full flex-col gap-2 md:gap-4">
+      <h2 class="font-display text-stroke text-4xl">TOGETHER STRONG !</h2>
+      <p class="text-body tracking-wide">
+        In Ponzi Land, we support a vibrant array of tokens and thriving
+        multicommunities. Each token is a piece of beautiful art, representing
+        the diverse and dynamic ecosystem we've built together. We even have
+        custom houses, but you're always welcome to bring your own token! From
+        $PAPER to $LORDS, every token tells a story and brings us closer. So,
+        let's stand united, and watch our communities flourish!
+      </p>
+    </div>
   </div>
 </section>

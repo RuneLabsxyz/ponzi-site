@@ -1,8 +1,8 @@
 <script lang="ts">
   import { gsap } from "gsap";
-
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   import { onMount } from "svelte";
+  import { getAsset } from "$lib/loaders/index.svelte";
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -20,9 +20,16 @@
       scale: 1,
       duration: 5,
     });
+
+    // Initialize with preloaded video if available
+    const preloadedVideo = getAsset("nukeAnimation");
+    if (preloadedVideo && videoElement) {
+      // Clone the preloaded video to use its buffer
+      videoElement.src = preloadedVideo.src;
+    }
   });
 
-  let paused = $state(true)
+  let paused = $state(true);
   let videoElement: HTMLVideoElement | undefined = undefined;
 
   function handleMouseOver() {
@@ -40,41 +47,47 @@
   }
 </script>
 
-<section
-  class="relative m-auto flex h-screen w-screen max-w-md flex-col items-center justify-center gap-6 md:flex-row lg:max-w-5xl xl:max-w-6xl"
->
+<section class="z-20 relative min-h-screen min-w-screen">
   <div
-    id="nukeFullArt"
-    class="relative w-full md:p-24 transform scale-90"
-    onmouseover={handleMouseOver}
-    onmouseout={handleMouseOut}
-    onfocus={handleMouseOver}
-    onblur={handleMouseOut}
-    role="img"
-    aria-label="Nuke Incoming with video overlay on hover"
+    class="m-auto flex flex-col items-center justify-center gap-6 md:flex-row lg:max-w-4xl xl:max-w-6xl p-4"
   >
-    <img
-      src="/images/fullart-nuke-incoming.png"
-      alt="Nuke Incoming !!!"
-      class="w-full h-full object-contain object-center"
-    />
-    <video
-      muted
-      loop
-      class="absolute inset-0 w-full h-full object-contain transition-opacity duration-300 scale-90 {paused ? 'opacity-0' : 'opacity-100'}"
-      src="/videos/nuke-animation.mp4"
-      bind:paused={paused}
+    <div
+      id="nukeFullArt"
+      class="relative w-full transform scale-90"
+      onmouseover={handleMouseOver}
+      onmouseout={handleMouseOut}
+      onfocus={handleMouseOver}
+      onblur={handleMouseOut}
+      role="img"
+      aria-label="Nuke Incoming with video overlay on hover"
     >
-    </video>
-  </div>
-  <div class="flex w-full flex-col">
-    <h2 class="font-display text-stroke text-4xl">NUKE 'EM !</h2>
-    <p class="text-body tracking-wide">
-      What happens if they don't pay, you ask? In PonziLand, if your neighbors
-      don't pay up, it's time to hit the big red button and watch the sparks
-      fly! It's a high-stakes game where every move counts, and sometimes, a
-      little chaos is just what you need to shake things up. So, are you ready
-      to nuke 'em and take control? The power is in your hands! 💥🚀
-    </p>
+      <img
+        src="/images/fullart-nuke-incoming.png"
+        alt="Nuke Incoming !!!"
+        class="object-contain"
+        loading="lazy"
+        decoding="async"
+      />
+      <video
+        muted
+        loop
+        class="absolute top-0 left-0 right-0 bottom-0 object-contain transition-opacity duration-300 {paused
+          ? 'opacity-0'
+          : 'opacity-100'}"
+        bind:this={videoElement}
+        bind:paused
+      >
+      </video>
+    </div>
+    <div class="flex w-full flex-col gap-2 md:gap-4">
+      <h2 class="font-display text-stroke text-4xl">NUKE 'EM !</h2>
+      <p class="text-body tracking-wide">
+        What happens if they don't pay, you ask? In PonziLand, if your neighbors
+        don't pay up, it's time to hit the big red button and watch the sparks
+        fly! It's a high-stakes game where every move counts, and sometimes, a
+        little chaos is just what you need to shake things up. So, are you ready
+        to nuke 'em and take control? The power is in your hands! 💥🚀
+      </p>
+    </div>
   </div>
 </section>

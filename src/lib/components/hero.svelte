@@ -24,14 +24,12 @@
   id="downarrows"
   class="fixed bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center z-10 gap-2"
 >
-  <div
-    class="w-full flex justify-center items-center gap-6 z-10 flex-wrap scale-50"
-  >
+  <div class="w-full flex justify-center items-center gap-6 z-10 scale-50">
     <a
       target="_blank"
       rel="noopener noreferrer"
       href="https://x.com/ponzidotland"
-      class="hover:scale-110 opacity-50 hover:opacity-100 transition-all"
+      class="hover:scale-110 focus:scale-110 opacity-80 hover:opacity-90 focus:opacity-100 transition-all"
       aria-label="Twitter"
     >
       <svg
@@ -52,7 +50,7 @@
       target="_blank"
       rel="noopener noreferrer"
       href="https://discord.gg/ponziland"
-      class="hover:scale-110 opacity-50 hover:opacity-100 transition-all"
+      class="hover:scale-110 focus:scale-110 opacity-90 hover:opacity-100 focus:opacity-100 transition-all"
       aria-label="Discord"
     >
       <svg
@@ -74,7 +72,7 @@
       target="_blank"
       rel="noopener noreferrer"
       href="https://github.com/RuneLabsxyz/PonziLand"
-      class="hover:scale-110 opacity-50 hover:opacity-100 transition-all"
+      class="hover:scale-110 focus:scale-110 opacity-90 hover:opacity-100 focus:opacity-100 transition-all"
       aria-label="GitHub"
     >
       <svg
@@ -97,10 +95,10 @@
     </a>
   </div>
   <a
-    class="px-4 py-2 font-bold bg-blue-500 opacity-50 hover:opacity-100 transition-all"
+    class="px-4 py-2 font-bold bg-blue-500 opacity-50 hover:opacity-100 focus:opacity-100 transition-all"
     href="https://play.ponzi.land">Play game</a
   >
-  <div class="relative opacity-50">
+  <div class="relative opacity-90">
     <svg
       class="h-6 w-6 text-yellow-500"
       fill="none"

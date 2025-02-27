@@ -2,8 +2,6 @@
   import { T } from "@threlte/core";
   import {
     interactivity,
-    useGltf,
-    useTexture,
     useCursor,
   } from "@threlte/extras";
   import { Spring } from "svelte/motion";
@@ -15,6 +13,8 @@
     Texture,
     type Mesh,
   } from "three";
+  
+  import { getAsset, allAssetsLoaded } from '$lib/loaders/index.svelte';
 
   type Props = {
     mesh: Mesh;
@@ -98,7 +98,7 @@
   target-position={[0, 0, 0]}
 />
 
-{#await useGltf("/3d/runelabslogo.glb") then gltf}
+{#if $allAssetsLoaded}
   <T.Group
     rotation.y={-rotation}
     position.y={translate}
@@ -106,7 +106,7 @@
     {scale}
   >
     <T
-      is={gltf.scene}
+      is={getAsset('runelabsLogo')?.scene}
       scale={logoScale.current}
       onpointerenter={() => {
         logoScale.target = 1.1;
@@ -128,7 +128,15 @@
 
     <!-- <PonziboysAtlas /> -->
   </T.Group>
-{/await}
+{:else}
+  <!-- Placeholder for when model is loading -->
+  <T.Group>
+    <T.Mesh>
+      <T.BoxGeometry args={[1, 1, 1]} />
+      <T.MeshStandardMaterial color="#0B4F6C" />
+    </T.Mesh>
+  </T.Group>
+{/if}
 
 {#if isHovering}
   <style>
