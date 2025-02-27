@@ -64,14 +64,13 @@
       <img
         src="/images/fullart-nuke-incoming.png"
         alt="Nuke Incoming !!!"
-        class="object-contain"
         loading="lazy"
         decoding="async"
       />
       <video
         muted
         loop
-        class="absolute top-0 left-0 right-0 bottom-0 object-contain transition-opacity duration-300 {paused
+        class="absolute top-0 left-0 h-full w-full object-contain transition-opacity duration-300 {paused
           ? 'opacity-0'
           : 'opacity-100'}"
         bind:this={videoElement}
