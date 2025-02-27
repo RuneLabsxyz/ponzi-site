@@ -30,6 +30,7 @@
 		"vite": "^6.0.0"
 	},
 	"dependencies": {
+		"@sveltejs/enhanced-img": "^0.4.4",
 		"@threlte/core": "^8.0.1",
 		"@threlte/extras": "^9.0.1",
 		"@types/seedrandom": "^3.0.8",
