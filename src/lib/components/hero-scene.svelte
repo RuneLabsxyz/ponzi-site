@@ -14,6 +14,7 @@
   import { scrollY } from "$lib/scroll-store.svelte";
   import Carousel from "./carousel.svelte";
   import { tweaks } from "$lib/tweak-store.svelte";
+  import { fade } from "svelte/transition";
 
   type Props = {
     mesh: Mesh;
@@ -113,7 +114,7 @@
   </T.Group>
 
   <Carousel>
-    {#snippet logo()}
+    {#snippet logo(isVisible)}
       <!-- <T.Mesh>
         <T.PlaneGeometry args={[5, 5]} />
         <ImageMaterial
@@ -130,10 +131,11 @@
           class="w-32 h-32"
           alt="ponzi Logo"
           style="image-rendering: pixelated;"
+          transition:fade={{ duration: 400 }}
         />
       </HTML>
     {/snippet}
-    {#snippet okdepart()}
+    {#snippet okdepart(isVisible)}
       <T.Group>
         <T.Mesh>
           <T.PlaneGeometry args={[5, 5]} />
@@ -144,9 +146,58 @@
           />
         </T.Mesh>
         <HTML position={[-2.5, 0, 1]} transform>
-          <h2 class="font-display text-stroke">
-            DIVE IN A BRAND <br /> NEW WORLD !
-          </h2>
+          {#if isVisible}
+            <h2
+              class="font-display text-stroke"
+              transition:fade={{ duration: 400 }}
+            >
+              DIVE IN A BRAND <br /> NEW WORLD !
+            </h2>
+          {/if}
+        </HTML>
+      </T.Group>
+    {/snippet}
+    {#snippet okrelai(isVisible)}
+      <T.Group>
+        <T.Mesh>
+          <T.PlaneGeometry args={[5, 5]} />
+          <ImageMaterial
+            side={DoubleSide}
+            url="/images/fullart-default.png"
+            radius={0.1}
+          />
+        </T.Mesh>
+        <HTML position={[-2.5, 0, 1]} transform>
+          {#if isVisible}
+            <h2
+              class="font-display text-stroke"
+              transition:fade={{ duration: 400 }}
+            >
+              DIVE IN A BRAND <br /> NEW WORLD !
+            </h2>
+          {/if}
+        </HTML>
+      </T.Group>
+    {/snippet}
+    {#snippet okdac(isVisible)}
+      <T.Group>
+        <T.Mesh>
+          <T.PlaneGeometry args={[5, 5]} />
+          <ImageMaterial
+            side={DoubleSide}
+            url="/images/fullart-default.png"
+            radius={0.1}
+          />
+        </T.Mesh>
+        <HTML position={[-2.5, 0, 1]} transform>
+          {#if isVisible}
+            <h2
+              class="font-display text-stroke"
+              transition:fade={{ duration: 400 }}
+            >
+              DIVE IN A BRAND <br /> NEW WORLD !
+            </h2>
+          {/if}
         </HTML>
       </T.Group>
     {/snippet}

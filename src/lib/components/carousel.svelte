@@ -6,7 +6,7 @@
 
   type Props = {
     // restProps : anything of type Snippet
-    [key: string]: Snippet;
+    [key: string]: Snippet<[isHtmlVisible: boolean]>;
   };
 
   let { children, ...restProps }: Props = $props();
@@ -18,6 +18,7 @@
   const angleDisplacement = (2 * Math.PI) / 3;
   const circleSize = 10;
   const heightDisplacement = 6;
+  const visibilityThreshold = 2; // Distance threshold to show HTML
 
   let imagesRotation = $derived(
     (scrollY.value / document.body.scrollHeight) *
@@ -39,6 +40,12 @@
 
     return -Math.abs(a * (x - h) ** 3 + k);
   };
+
+  // Calculate if a snippet's HTML should be visible based on its position
+  const isHtmlVisible = (i: number) => {
+    const distance = Math.abs(imagesTranslate - i * heightDisplacement);
+    return distance < visibilityThreshold;
+  };
   // const angleDisplacement = Math.PI / 2;
 </script>
 
@@ -59,7 +66,7 @@
       receiveShadow
     >
       <T.Group rotation.z={getSingleRotation(i)} receiveShadow>
-        {@render child()}
+        {@render child(isHtmlVisible(i))}
       </T.Group>
     </T.Group>
   {/each}
