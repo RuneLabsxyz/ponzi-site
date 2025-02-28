@@ -46,7 +46,7 @@
 <T.Group
   rotation.y={-imagesRotation}
   position.y={imagesTranslate}
-  position.x={-5}
+  position.x={-7}
 >
   {#each childs as child, i}
     <T.Group

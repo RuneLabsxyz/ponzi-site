@@ -1,5 +1,5 @@
 export let tweaks = $state({
-  granularity: 4,
+  granularity: 1,
   scaleFactor: 1,
   rotateFactor: 4.45,
   translateFactor: 0,

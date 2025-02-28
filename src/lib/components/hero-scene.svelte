@@ -1,6 +1,11 @@
 <script lang="ts">
   import { T } from "@threlte/core";
-  import { ImageMaterial, interactivity, OrbitControls } from "@threlte/extras";
+  import {
+    HTML,
+    ImageMaterial,
+    interactivity,
+    OrbitControls,
+  } from "@threlte/extras";
   import { Spring } from "svelte/motion";
 
   import { DoubleSide, type Mesh } from "three";
@@ -121,15 +126,22 @@
       </T.Mesh>
     {/snippet}
     {#snippet okdepart()}
-      <T.Mesh>
-        <T.PlaneGeometry args={[5, 5]} />
-        <ImageMaterial
-          transparent
-          side={DoubleSide}
-          url="/images/fullart-default.png"
-          radius={0.1}
-        />
-      </T.Mesh>
+      <T.Group>
+        <T.Mesh >
+          <T.PlaneGeometry args={[5, 5]} />
+          <ImageMaterial
+            transparent
+            side={DoubleSide}
+            url="/images/fullart-default.png"
+            radius={0.1}
+          />
+        </T.Mesh>
+        <HTML position={[-2.5, 0, 1]} transform>
+          <h2 class="font-display text-stroke text-3xl">
+            DIVE IN A BRAND NEW WORLD !
+          </h2>
+        </HTML>
+      </T.Group>
     {/snippet}
   </Carousel>
 {:else}
