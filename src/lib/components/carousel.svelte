@@ -28,7 +28,7 @@
   let imagesTranslate = $derived.by(() => {
   const rotation = (scrollY.value / document.body.scrollHeight) * tweaks.rotateFactor * tweaks.rotateFactor;
   const translate = (rotation / angleDisplacement) * heightDisplacement;
-  return translate + 0.5;
+  return translate + 0.2;
 });
 
   const getSingleRotation = (i: number) => {

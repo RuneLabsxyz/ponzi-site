@@ -114,7 +114,7 @@
 
   <Carousel>
     {#snippet logo()}
-      <T.Mesh>
+      <!-- <T.Mesh>
         <T.PlaneGeometry args={[5, 5]} />
         <ImageMaterial
           transparent
@@ -123,22 +123,29 @@
           radius={0.1}
           zoom={0.6}
         />
-      </T.Mesh>
+      </T.Mesh> -->
+      <HTML transform>
+        <img
+          src="/images/logo.png"
+          class="w-32 h-32"
+          alt="ponzi Logo"
+          style="image-rendering: pixelated;"
+        />
+      </HTML>
     {/snippet}
     {#snippet okdepart()}
       <T.Group>
-        <T.Mesh >
+        <T.Mesh>
           <T.PlaneGeometry args={[5, 5]} />
           <ImageMaterial
-            transparent
             side={DoubleSide}
             url="/images/fullart-default.png"
             radius={0.1}
           />
         </T.Mesh>
         <HTML position={[-2.5, 0, 1]} transform>
-          <h2 class="font-display text-stroke text-3xl">
-            DIVE IN A BRAND NEW WORLD !
+          <h2 class="font-display text-stroke">
+            DIVE IN A BRAND <br /> NEW WORLD !
           </h2>
         </HTML>
       </T.Group>
