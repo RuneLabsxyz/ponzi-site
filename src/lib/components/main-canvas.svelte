@@ -1,20 +1,13 @@
 <script lang="ts">
   import { Canvas } from "@threlte/core";
-  import { Pane, Slider } from "svelte-tweakpane-ui";
+  import { Checkbox, Pane, Slider } from "svelte-tweakpane-ui";
   import { Mesh } from "three";
   import HeroScene from "./hero-scene.svelte";
   import PixelatedRender from "./pixelated-render.svelte";
   import { onMount } from "svelte";
+  import { tweaks } from "$lib/tweak-store.svelte";
 
   const mesh = new Mesh();
-
-  let granularity = $state(4);
-  let scaleFactor = $state(1);
-  let rotateFactor = $state(4.45);
-  let translateFactor = $state(0);
-  let rotateOffset = $state(0.21);
-  let scaleOffset = $state(1);
-  let translateOffset = $state(1);
 
   let dev = $state(false);
 
@@ -26,54 +19,55 @@
 {#if dev}
   <Pane position="draggable" title="outline effect">
     <Slider
-      bind:value={granularity}
+      bind:value={tweaks.granularity}
       label="granularity"
       min={1}
       max={20}
       step={1}
     />
     <Slider
-      bind:value={rotateOffset}
+      bind:value={tweaks.rotateOffset}
       label="rotate offset"
       min={-Math.PI}
       max={Math.PI}
       step={0.01}
     />
     <Slider
-      bind:value={rotateFactor}
+      bind:value={tweaks.rotateFactor}
       label="rotate factor"
       min={0}
       max={10}
       step={0.05}
     />
     <Slider
-      bind:value={scaleOffset}
+      bind:value={tweaks.scaleOffset}
       label="scale offset"
       min={0}
       max={10}
       step={0.1}
     />
     <Slider
-      bind:value={scaleFactor}
+      bind:value={tweaks.scaleFactor}
       label="scale factor"
       min={0}
       max={10}
       step={0.1}
     />
     <Slider
-      bind:value={translateOffset}
+      bind:value={tweaks.translateOffset}
       label="translate offset"
       min={-1}
       max={1}
       step={0.01}
     />
     <Slider
-      bind:value={translateFactor}
+      bind:value={tweaks.translateFactor}
       label="translate factor"
       min={0}
       max={10}
       step={0.1}
     />
+    <Checkbox bind:value={tweaks.orbitControls} label="orbit controls" />
   </Pane>
 {/if}
 
@@ -81,14 +75,8 @@
   <Canvas>
     <HeroScene
       {mesh}
-      {scaleFactor}
-      {rotateFactor}
-      {translateFactor}
-      {rotateOffset}
-      {scaleOffset}
-      {translateOffset}
     />
-    <PixelatedRender {mesh} {granularity} />
+    <PixelatedRender {mesh} granularity={tweaks.granularity} />
   </Canvas>
 </section>
 

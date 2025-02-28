@@ -8,7 +8,7 @@
 </script>
 
 <MainCanvas />
-
+<!-- 
 <Hero />
 
 <SectionLandofponzi />
@@ -17,6 +17,9 @@
 
 <SectionTax />
 
-<SectionNuke />
+<SectionNuke /> -->
 
+<section class="relative h-screen w-0"></section>
+<section class="relative h-screen w-0"></section>
+<section class="relative h-screen w-0"></section>
 <section class="relative h-screen w-0"></section>

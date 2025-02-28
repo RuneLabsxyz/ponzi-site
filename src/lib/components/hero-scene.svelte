@@ -1,74 +1,50 @@
 <script lang="ts">
   import { T } from "@threlte/core";
-  import {
-    interactivity,
-    useCursor,
-  } from "@threlte/extras";
+  import { ImageMaterial, interactivity, OrbitControls } from "@threlte/extras";
   import { Spring } from "svelte/motion";
 
-  import {
-    NearestFilter,
-    RepeatWrapping,
-    SRGBColorSpace,
-    Texture,
-    type Mesh,
-  } from "three";
-  
-  import { getAsset, allAssetsLoaded } from '$lib/loaders/index.svelte';
+  import { DoubleSide, type Mesh } from "three";
+
+  import { allAssetsLoaded, getAsset } from "$lib/loaders/index.svelte";
+  import { scrollY } from "$lib/scroll-store.svelte";
+  import Carousel from "./carousel.svelte";
+  import { tweaks } from "$lib/tweak-store.svelte";
 
   type Props = {
     mesh: Mesh;
-    scaleFactor: number;
-    rotateFactor: number;
-    translateFactor: number;
-    rotateOffset: number;
-    scaleOffset: number;
-    translateOffset: number;
   };
 
-  let {
-    mesh,
-    scaleFactor,
-    rotateFactor,
-    rotateOffset,
-    translateFactor,
-    translateOffset,
-    scaleOffset,
-  }: Props = $props();
+  let { mesh }: Props = $props();
 
-  let y = $state(0);
+  interactivity();
+  let logoScale = new Spring(1);
+  let isHovering = $state(false);
 
   let rotation = $derived(
-    (y / document.body.scrollHeight) * rotateFactor + rotateOffset
+    (scrollY.value / document.body.scrollHeight) * tweaks.rotateFactor +
+      tweaks.rotateOffset
   );
 
   let scale = $derived.by(() => {
-    const scale = (y / document.body.scrollHeight) * scaleFactor + scaleOffset;
+    const scale =
+      (scrollY.value / document.body.scrollHeight) * tweaks.scaleFactor +
+      tweaks.scaleOffset;
     return scale;
   });
 
   let translate = $derived.by(() => {
     const translate =
-      (y / document.body.scrollHeight) * translateFactor + translateOffset;
+      (scrollY.value / document.body.scrollHeight) * tweaks.translateFactor +
+      tweaks.translateOffset;
     return translate - 1;
   });
-
-  function pixelTexture(texture: Texture) {
-    texture.minFilter = NearestFilter;
-    texture.magFilter = NearestFilter;
-    texture.generateMipmaps = false;
-    texture.wrapS = RepeatWrapping;
-    texture.wrapT = RepeatWrapping;
-    texture.colorSpace = SRGBColorSpace;
-    return texture;
-  }
-
-  interactivity();
-  let logoScale = new Spring(1);
-  let isHovering = $state(false);
 </script>
 
-<svelte:window bind:scrollY={y} />
+<svelte:window
+  onscroll={(event) => {
+    scrollY.value = window.scrollY;
+  }}
+/>
 
 <T.PerspectiveCamera
   makeDefault
@@ -76,7 +52,11 @@
   oncreate={(ref: any) => {
     ref.lookAt(0, -0.3, 0);
   }}
-/>
+>
+  {#if tweaks.orbitControls}
+    <OrbitControls />
+  {/if}
+</T.PerspectiveCamera>
 
 <T.DirectionalLight
   color={0xfffffff}
@@ -106,7 +86,7 @@
     {scale}
   >
     <T
-      is={getAsset('runelabsLogo')?.scene}
+      is={getAsset("runelabsLogo")?.scene}
       scale={logoScale.current}
       onpointerenter={() => {
         logoScale.target = 1.1;
@@ -125,9 +105,33 @@
       <T.ConeGeometry args={[2.5, 3, 4, 1]} />
       <T.MeshStandardMaterial color="#0B4F6C" />
     </T>
-
-    <!-- <PonziboysAtlas /> -->
   </T.Group>
+
+  <Carousel>
+    {#snippet logo()}
+      <T.Mesh>
+        <T.PlaneGeometry args={[5, 5]} />
+        <ImageMaterial
+          transparent
+          side={DoubleSide}
+          url="/images/logo.png"
+          radius={0.1}
+          zoom={0.6}
+        />
+      </T.Mesh>
+    {/snippet}
+    {#snippet okdepart()}
+      <T.Mesh>
+        <T.PlaneGeometry args={[5, 5]} />
+        <ImageMaterial
+          transparent
+          side={DoubleSide}
+          url="/images/fullart-default.png"
+          radius={0.1}
+        />
+      </T.Mesh>
+    {/snippet}
+  </Carousel>
 {:else}
   <!-- Placeholder for when model is loading -->
   <T.Group>

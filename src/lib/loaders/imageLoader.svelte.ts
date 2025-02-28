@@ -2,7 +2,6 @@ import { assetMap, imageProgress, imagesLoaded, setAsset } from "./index.svelte.
 
 const imageAssets = [
   { key: "logo", path: "/images/logo.png" },
-  { key: "logoText", path: "/images/logo-text.png" },
   { key: "bg", path: "/images/bg.png" },
   { key: "coinFlat", path: "/images/coin-flat.png" },
   { key: "fullartDefault", path: "/images/fullart-default.png" },
