@@ -6,8 +6,8 @@
   import SectionNuke from '$lib/components/section-nuke.svelte';
   import SectionTax from '$lib/components/section-tax.svelte';
 </script>
-
-<MainCanvas />
+<div class="overflow-hidden">
+  <MainCanvas />
 
 <Hero />
 
@@ -20,3 +20,4 @@
 <SectionNuke />
 
 <section class="relative h-screen w-0"></section>
+</div>  
