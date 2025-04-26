@@ -2,7 +2,6 @@
   import { T } from "@threlte/core";
   import {
     interactivity,
-    useCursor,
   } from "@threlte/extras";
   import { Spring } from "svelte/motion";
 
@@ -54,24 +53,9 @@
     return translate - 1;
   });
 
-  function pixelTexture(texture: Texture) {
-    texture.minFilter = NearestFilter;
-    texture.magFilter = NearestFilter;
-    texture.generateMipmaps = false;
-    texture.wrapS = RepeatWrapping;
-    texture.wrapT = RepeatWrapping;
-    texture.colorSpace = SRGBColorSpace;
-    return texture;
-  }
-
   interactivity();
   let logoScale = new Spring(1);
   let isHovering = $state(false);
-
-  // Load the background texture
-  const textureLoader = new TextureLoader();
-  const backgroundTexture = textureLoader.load('/hero.png');
-  backgroundTexture.colorSpace = SRGBColorSpace;
 </script>
 
 <svelte:window bind:scrollY={y} />
@@ -83,11 +67,6 @@
     ref.lookAt(0, -2, 0);
   }}
 />
-<!-- Background Plane -->
-<T.Mesh position={[-3, -5, 0]} scale={[40, 20, 1]} rotation={[0, Math.PI/2, 0]}>
-  <T.PlaneGeometry args={[1, 1]} />
-  <T.MeshBasicMaterial map={backgroundTexture} />
-</T.Mesh>
 
 <T.DirectionalLight
   color={0xfffffff}
