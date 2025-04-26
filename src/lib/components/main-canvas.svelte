@@ -96,6 +96,7 @@
   .Container {
     background:
       radial-gradient(rgba(24, 18, 68, 0.5), rgba(14, 4, 21, 0.5)),
-      url("/ui/texture.png");
+      url("/hero.png"); 
+      background-size: cover; 
   }
 </style>
