@@ -17,7 +17,7 @@
 </script>
 
 <section class="relative flex h-screen w-full items-center justify-center">
-  <img src="/images/logo-text.png" alt="ponziland logo text" />
+  <img src="/images/logo-text.png" alt="ponziland logo text" class="-translate-y-20" />
 </section>
 
 <div

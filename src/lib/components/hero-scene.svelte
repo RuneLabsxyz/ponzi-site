@@ -12,6 +12,7 @@
     SRGBColorSpace,
     Texture,
     type Mesh,
+    TextureLoader,
   } from "three";
   
   import { getAsset, allAssetsLoaded } from '$lib/loaders/index.svelte';
@@ -66,6 +67,11 @@
   interactivity();
   let logoScale = new Spring(1);
   let isHovering = $state(false);
+
+  // Load the background texture
+  const textureLoader = new TextureLoader();
+  const backgroundTexture = textureLoader.load('/hero.png');
+  backgroundTexture.colorSpace = SRGBColorSpace;
 </script>
 
 <svelte:window bind:scrollY={y} />
@@ -74,9 +80,14 @@
   makeDefault
   position={[14, 2, 0]}
   oncreate={(ref: any) => {
-    ref.lookAt(0, -0.3, 0);
+    ref.lookAt(0, -2, 0);
   }}
 />
+<!-- Background Plane -->
+<T.Mesh position={[-3, -5, 0]} scale={[40, 20, 1]} rotation={[0, Math.PI/2, 0]}>
+  <T.PlaneGeometry args={[1, 1]} />
+  <T.MeshBasicMaterial map={backgroundTexture} />
+</T.Mesh>
 
 <T.DirectionalLight
   color={0xfffffff}
