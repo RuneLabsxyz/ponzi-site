@@ -109,6 +109,7 @@
     buildSpritesheet.from<typeof ponziboysAtlasMeta>(ponziboysAtlasMeta);
 
   let sprite: any;
+
 </script>
 
 {#await ponziboysAtlas.spritesheet then spritesheet}

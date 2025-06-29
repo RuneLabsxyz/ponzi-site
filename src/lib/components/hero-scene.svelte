@@ -15,6 +15,8 @@
   import Carousel from "./carousel.svelte";
   import { tweaks } from "$lib/tweak-store.svelte";
   import { fade } from "svelte/transition";
+  import { BentPlaneGeometry } from "$lib/BentPlaneGeometry";
+  import Welcome from "./snippets/welcome.svelte";
 
   type Props = {
     mesh: Mesh;
@@ -115,7 +117,7 @@
 
   <Carousel>
     {#snippet logo(isVisible)}
-      <!-- <T.Mesh>
+      <T.Mesh>
         <T.PlaneGeometry args={[5, 5]} />
         <ImageMaterial
           transparent
@@ -124,38 +126,10 @@
           radius={0.1}
           zoom={0.6}
         />
-      </T.Mesh> -->
-      <HTML transform>
-        <img
-          src="/images/logo.png"
-          class="w-32 h-32"
-          alt="ponzi Logo"
-          style="image-rendering: pixelated;"
-          transition:fade={{ duration: 400 }}
-        />
-      </HTML>
+      </T.Mesh>
     {/snippet}
-    {#snippet okdepart(isVisible)}
-      <T.Group>
-        <T.Mesh>
-          <T.PlaneGeometry args={[5, 5]} />
-          <ImageMaterial
-            side={DoubleSide}
-            url="/images/fullart-default.png"
-            radius={0.1}
-          />
-        </T.Mesh>
-        <HTML position={[-2.5, 0, 1]} transform>
-          {#if isVisible}
-            <h2
-              class="font-display text-stroke"
-              transition:fade={{ duration: 400 }}
-            >
-              DIVE IN A BRAND <br /> NEW WORLD !
-            </h2>
-          {/if}
-        </HTML>
-      </T.Group>
+    {#snippet welcome(isVisible)}
+      <Welcome {isVisible} />
     {/snippet}
     {#snippet okrelai(isVisible)}
       <T.Group>
