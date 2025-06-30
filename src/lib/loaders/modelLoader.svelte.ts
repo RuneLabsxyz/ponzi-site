@@ -2,7 +2,7 @@
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { modelProgress, modelsLoaded, setAsset } from "./index.svelte.js";
 
-const modelAssets = [{ key: "runelabsLogo", path: "/3d/runelabslogo.glb" }];
+const modelAssets = [{ key: "runelabsLogo", path: "/3d/newrunelabslogo.glb" }];
 
 export function preloadModels() {
   return new Promise<void>((resolve) => {
