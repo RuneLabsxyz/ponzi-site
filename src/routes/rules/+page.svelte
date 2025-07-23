@@ -23,14 +23,14 @@
       title: "2. Daily tax system",
       summary:
         "2. Each day, you pay a small tax (based on that price) to your eight neighbors.",
-      details: `- Tax is calculated as a % of your land's price<br><br>- Tax is paid every 24 hours automatically<br><br>- The tax is split equally among your 8 neighbors`,
+      details: `- Tax is calculated as a % of your land's price<br><br>- You can claim taxes anytime<br><br>- The tax is split equally among your 8 neighbors`,
       example: "Video tutorial coming soon...",
     },
     {
       id: "token-pump",
       title: "3. Token performance arbitrage",
       summary:
-        "3. If your neighbors' tokens pump more than yours, you earn — and vice versa.",
+        "3. If your neighbors' tokens pump more than yours, you earn and vice versa.",
       details: `- You pay tax in YOUR token<br><br>- You receive tax in NEIGHBORS' tokens<br><br>- Profit if their tokens pump harder than yours`,
       example: "Video tutorial coming soon...",
     },
@@ -52,7 +52,7 @@
 <div class="min-h-screen bg-black text-white">
   <div class="container mx-auto px-4 py-16 max-w-4xl">
     <h1
-      class="font-arcade text-5xl md:text-7xl text-center mb-4 text-yellow-300 tracking-wider"
+      class="font-arcade text-5xl md:text-7xl text-center mb-4 text-yellow-300 tracking-wider pt-10"
     >
       GAME RULES
     </h1>
@@ -149,4 +149,3 @@
     background-color: black;
   }
 </style>
-
