@@ -64,7 +64,7 @@
   makeDefault
   position={[14, 2, 0]}
   oncreate={(ref: any) => {
-    ref.lookAt(0, -2, 0);
+    ref.lookAt(0, 0, 0);
   }}
 />
 
@@ -91,7 +91,7 @@
 {#if $allAssetsLoaded}
   <T.Group
     rotation.y={-rotation}
-    position.y={translate}
+    position.y={translate + 0.5}
     position.z={translate * 1.5}
     {scale}
   >
