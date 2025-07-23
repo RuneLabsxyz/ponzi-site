@@ -107,7 +107,7 @@
         isHovering = false;
       }}
       onclick={() => {
-        window.open("https://runelabs.xyz", "_blank");
+        window.open("https://www.runelabs.xyz", "_blank");
       }}
       castShadow
     ></T>
