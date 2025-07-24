@@ -12,6 +12,7 @@ jobs:
     permissions:
       contents: read
       deployments: write
+      pull-requests: write
 
     steps:
       - name: Checkout repo
@@ -35,3 +36,24 @@ jobs:
           directory: .svelte-kit/cloudflare
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.head_ref || github.ref_name }}
+
+      - name: Find existing PR comment
+        if: github.event_name == 'pull_request'
+        uses: peter-evans/find-comment@v3
+        id: find-comment
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: github-actions[bot]
+          body-includes: "✅ Preview deployed to Cloudflare Pages"
+
+      - name: Create or update PR comment with preview URL
+        if: github.event_name == 'pull_request'
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          body: |
+            ✅ Preview deployed to Cloudflare Pages
+
+            🔗 [https://${{ github.head_ref }}.${{ vars.CLOUDFLARE_PROJECT_NAME }}.pages.dev](https://${{ github.head_ref }}.${{ vars.CLOUDFLARE_PROJECT_NAME }}.pages.dev)
+          edit-mode: replace
