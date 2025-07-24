@@ -1,24 +1,10 @@
 name: Deploy to Cloudflare Pages
 
 on:
-  workflow_call:
-    secrets:
-      CLOUDFLARE_API_TOKEN:
-        required: true
-    inputs:
-      directory:
-        required: true
-        type: string
-      project-name:
-        required: true
-        type: string
-      account-id:
-        required: true
-        type: string
-  pull_request:
-    branches: [ main ]
   push:
-    branches: [ main ]
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   deploy:
@@ -44,9 +30,8 @@ jobs:
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ inputs.account-id || 'your-account-id' }}
+          accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
           projectName: ${{ vars.CLOUDFLARE_PROJECT_NAME }}
-          directory: ${{ inputs.directory || 'dist' }}
+          directory: .svelte-kit/cloudflare
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.head_ref || github.ref_name }}
-          production: ${{ github.ref == 'refs/heads/main' }}
