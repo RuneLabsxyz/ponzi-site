@@ -45,7 +45,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ inputs.account-id || 'your-account-id' }}
-          projectName: ponzi-site
+          projectName: ${{ vars.CLOUDFLARE_PROJECT_NAME }}
           directory: ${{ inputs.directory || 'dist' }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.head_ref || github.ref_name }}
