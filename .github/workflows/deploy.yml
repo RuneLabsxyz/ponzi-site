@@ -15,6 +15,10 @@ on:
       account-id:
         required: true
         type: string
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
 
 jobs:
   deploy:
@@ -40,9 +44,9 @@ jobs:
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ inputs.account-id }}
+          accountId: ${{ inputs.account-id || 'your-account-id' }}
           projectName: ponzi-site
-          directory: ${{ inputs.directory }}
+          directory: ${{ inputs.directory || 'dist' }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.head_ref || github.ref_name }}
           production: ${{ github.ref == 'refs/heads/main' }}
