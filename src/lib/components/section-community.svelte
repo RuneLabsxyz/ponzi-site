@@ -2,7 +2,7 @@
   import { gsap } from "gsap";
 
   import { tokens } from "$lib/utils";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
   import { onMount } from "svelte";
   import LandDisplay from "./land/land-display.svelte";
   import RandomLand from "./land/randomLand.svelte";

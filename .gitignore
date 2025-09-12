@@ -25,3 +25,5 @@ vite.config.ts.timestamp-*
 .direnv
 .devenv
 .devenv*
+
+.wrangler

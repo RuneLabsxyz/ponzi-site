@@ -1,7 +1,7 @@
 <script lang="ts">
   import { gsap } from "gsap";
 
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
   import { onMount } from "svelte";
 
   gsap.registerPlugin(ScrollTrigger);
@@ -23,15 +23,11 @@
   });
 </script>
 
-<section
-  class="z-20 relative min-h-screen min-w-screen"
->
-  <div class="m-auto flex flex-col items-center justify-center gap-6 md:flex-row-reverse lg:max-w-4xl xl:max-w-6xl p-4">
-    <div
-      id="welcomeFullArt"
-      class="w-full"
-      style="transform: scale(0.9)"
-    >
+<section class="z-20 relative min-h-screen min-w-screen">
+  <div
+    class="m-auto flex flex-col items-center justify-center gap-6 md:flex-row-reverse lg:max-w-4xl xl:max-w-6xl p-4"
+  >
+    <div id="welcomeFullArt" class="w-full" style="transform: scale(0.9)">
       <img
         src="/images/fullart-default.png"
         alt="megamap"
