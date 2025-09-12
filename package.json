@@ -37,6 +37,7 @@
     "@types/seedrandom": "^3.0.8",
     "@types/three": "^0.173.0",
     "gsap": "^3.12.7",
+    "posthog-js": "^1.264.2",
     "postprocessing": "^6.36.7",
     "seedrandom": "^3.0.5",
     "svelte-tweakpane-ui": "^1.5.2",
