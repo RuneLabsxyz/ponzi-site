@@ -49,7 +49,7 @@
     <a
       target="_blank"
       rel="noopener noreferrer"
-      href="https://discord.gg/ponziland"
+      href="https://discord.gg/2Mt3HhQpmD"
       class="hover:scale-110 focus:scale-110 opacity-90 hover:opacity-100 focus:opacity-100 transition-all"
       aria-label="Discord"
     >
